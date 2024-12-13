@@ -21,7 +21,7 @@ class HomePage extends GetView<HomeController> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          flavorName == "Production"
+          flavorName == "Staging"
               ? Column(
                   children: [
                     Padding(
