@@ -23,29 +23,15 @@ class PostModel extends Equatable {
     );
   }
 
-  /// Converts the object to a json serializable map.
-  ///
-  /// This is typically used when sending the object to a server or storing it in a database.
-  ///
-  /// The resulting map has the following structure:
-  ///
-  ///
   Map<String, dynamic> toJson() {
-    return {
-      'userId': userId,
-      'id': id,
-      'title': title,
-      'body': body,
-    };
+    final data = <String, dynamic>{};
+    data['userId'] = userId;
+    data['id'] = id;
+    data['title'] = title;
+    data['body'] = body;
+    return data;
   }
 
-  /// Converts the model to an entity.
-  ///
-  /// This is typically used when displaying the object in a user interface or when
-  /// performing calculations on the object.
-  ///
-  /// The resulting entity has the same properties as the model, but is not
-  /// serializable to JSON.
   Post toEntity() => Post(userId: userId, id: id, title: title, body: body);
 
   @override

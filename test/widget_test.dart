@@ -1,19 +1,20 @@
-import 'package:dartz/dartz.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
-import 'package:mockito/annotations.dart';
+import 'package:dartz/dartz.dart';
 import 'package:mockito/mockito.dart';
-import 'package:ttm01_flutter_dependency_injection/data/post_repository.impl.dart';
+import 'package:mockito/annotations.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:ttm01_flutter_dependency_injection/ui/app.dart';
 import 'package:ttm01_flutter_dependency_injection/domain/entities/post.dart';
 import 'package:ttm01_flutter_dependency_injection/domain/post_repository.dart';
-import 'package:ttm01_flutter_dependency_injection/ui/app.dart';
+import 'package:ttm01_flutter_dependency_injection/data/post_repository.impl.dart';
+import 'package:ttm01_flutter_dependency_injection/ui/controllers/home_controller.dart';
 
 import 'widget_test.mocks.dart';
 
 @GenerateMocks([PostRepositoryImpl])
 void main() {
   final PostRepository mockedRepository = MockPostRepositoryImpl();
-
+  Get.lazyPut(() => HomeController(repo: mockedRepository));
   Get.put<PostRepository>(mockedRepository);
 
   testWidgets(
@@ -23,9 +24,9 @@ void main() {
       (_) => Future.value(const Right(<Post>[
         Post(
           id: 1,
+          userId: 1,
           title: 'my post title',
           body: 'my post body',
-          userId: 1,
         ),
       ])),
     );

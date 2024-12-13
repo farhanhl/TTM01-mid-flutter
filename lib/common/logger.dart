@@ -1,3 +1,9 @@
 import 'package:logger/logger.dart';
 
-final logger = Logger();
+void logMessage(Logger logger, String message) {
+  logger.i(message);
+}
+
+void logMessageError(Logger logger, String message) {
+  logger.e(message);
+}

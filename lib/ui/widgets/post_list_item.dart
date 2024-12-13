@@ -17,8 +17,11 @@ class PostListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(post.title),
-      subtitle:
-          Text(post.bodyText!, maxLines: 1, overflow: TextOverflow.ellipsis),
+      subtitle: Text(
+        post.bodyText ?? "",
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 }

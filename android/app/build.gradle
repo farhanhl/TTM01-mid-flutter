@@ -37,6 +37,20 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+
+    flavorDimensions "env"
+    productFlavors {
+        staging {
+            dimension "env"
+            applicationId "com.myblog.staging"
+            resValue "string", "app_name", "MyBlog Staging"
+        }
+        production {
+            dimension "env"
+            applicationId "com.myblog"
+            resValue "string", "app_name", "MyBlog"
+        }
+    }
 }
 
 flutter {
